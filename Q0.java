@@ -9,6 +9,7 @@ public class Q0 {
         int count = 0;
         int tally = 0;
         int N = 1;
+        int exponentialGrowth = 1;
         
 
         while(diceRoll1 != 100){
@@ -48,8 +49,30 @@ public class Q0 {
         if( r3 == 0){
             System.out.println("You retired with " + tally + " points");
         } else {
-            while
+            while(r3 == 1) {
+                diceRoll1 = (int)(Math.random()*6+1);
+                diceRoll2 = (int)(Math.random()*6+1);
+                diceRoll3 = (int)(Math.random()*6+1);
+                System.out.println("You rolled " + diceRoll1 + diceRoll2 + diceRoll3);
+                if( diceRoll1 == diceRoll2 && diceRoll3 == diceRoll2){
+                    if( diceRoll1 == tripletsWorth){
+                        System.out.println("Congrats, your tally is trippled");
+                        tally = tally * 3;
+                        System.out.println("You have finished with " + tally + " points");
+                    } else {
+                        tally = diceRoll1;
+                        System.out.println("That sucks, you have ended with " + tally + "points");
+                    }
+                    break;
+                }
+                System.out.println("Would you like to retire:");
+                r3 = scan.nextInt();
+                tally = tally + exponentialGrowth;
+                exponentialGrowth = exponentialGrowth * 3;
+            }
         }
+
+        System.out.println("Congrats, your final tally is " + tally);
     }
 
 
